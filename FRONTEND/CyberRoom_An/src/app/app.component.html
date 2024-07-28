@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberRoom</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Font Awesome -->
+</head>
+<body>
+    <!-- Header para administradores -->
+    <app-admin-header *ngIf="is_Admin()"></app-admin-header>
+    <app-user></app-user>
+    <!-- Header para usuarios normales -->
+    <app-header *ngIf="!is_Admin()"></app-header>
+
+    <div class="main-container">
+        <!-- Barra lateral para administradores -->
+        <div class="admin-sidebar" *ngIf="is_Admin()">
+            <!-- <app-admin-control-panel *ngIf="is_Admin()"></app-admin-control-panel> -->
+            <app-admin-dashboard *ngIf="is_Admin()"></app-admin-dashboard>
+        </div>
+        <!-- Contenido de la aplicación -->
+        <div class="content-container">
+            <router-outlet></router-outlet>
+        </div>
+        <!-- <app-admin-home *ngIf="is_Admin()"></app-admin-home> -->
+    </div>
+
+    <!-- Footer -->
+    <app-footer *ngIf="!is_Admin()"></app-footer>
+</body>
+</html>
